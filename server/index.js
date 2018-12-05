@@ -5,6 +5,7 @@ const mc = require('./messages_controller');
 const app = express();
 
 app.use( bodyParser.json() );
+app.use( express.static( __dirname + '/../public/build' ) );
 
 const messageBaseUrl = "/api/messages";
 
@@ -34,5 +35,6 @@ app.delete( `${messageBaseUrl}/:id`, mc.deleteMessage);
 // http://localhost:3001 ( PUT ) - update from messages_controller executes - responds with messages array
 // http://localhost:3001 ( DELETE ) - delete from messages_controller executes - responds with messages array
 
-const port = 3087;
+const port = 3001;
+
 app.listen( port, () => { console.log(`It's Magic! ${port}` ); } );
